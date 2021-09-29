@@ -7,19 +7,26 @@ async function getInfo(){
         HOK:"香港"
     }
 
-    let currentTimeStamp= new Date()
-
+    
+    
     const info = json.data['AEL-AIR'].UP
     
+    const currentTime = json.curr_time;
+    const currentTimeStamp = new Date(currentTime).getTime();
+    const targetTimeStamp = new Date(info[0].time).getTime();
+    const timeLeft = Math.ceil((targetTimeStamp-currentTimeStamp)/1000/60);
+    console.log(new Date());
+    console.log(info[0].time)
+
     console.log(json);
     document.getElementById("destination").innerHTML=STA_NAME[info[0].dest]
     document.getElementById("platform").innerHTML=info[0].plat
     document.getElementById("time").innerHTML=info[0].time
 
     document.getElementById("inone").innerHTML=
-    `<div>${STA_NAME[info[0].dest]} ${info[0].plat} ${info[0].time}</div>`
+    `<div>${STA_NAME[info[0].dest]} ${info[0].plat} ${info[0].time} ${timeLeft}</div>`
 
-    console.log(time)
+
 }
 
 getInfo();
