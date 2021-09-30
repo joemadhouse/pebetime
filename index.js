@@ -24,7 +24,7 @@ async function getInfo(){
     document.getElementById("time").innerHTML=info[0].time
 
     document.getElementById("inone").innerHTML=
-    `<div>${STA_NAME[info[0].dest]} ${info[0].plat} ${info[0].time} ${timeLeft}</div>`
+    `<div>${STA_NAME[info[0].dest]} ${info[0].plat} ${info[0].time} Next Train will be arrived in <b>${timeLeft}</b> minutes</div>`
 
 
 }
