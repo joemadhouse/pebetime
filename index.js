@@ -27,7 +27,9 @@ async function getInfo(){
 
     document.getElementById("inone").innerHTML=
     `<div>往 ${STA_NAME[info[0].dest]} 月台:${info[0].plat} 到站時間:${info[0].time} <b>${timeCal(currentTime, info[0].time, "First")}</b></div>
-    <div>往 ${STA_NAME[info[1].dest]} 月台:${info[1].plat} 到站時間:${info[1].time}  <b>${timeCal(currentTime, info[1].time, "Second")}</b></div>`
+    <div>往 ${STA_NAME[info[1].dest]} 月台:${info[1].plat} 到站時間:${info[1].time}  <b>${timeCal(currentTime, info[1].time, "Second")}</b></div>
+    <div>往 ${STA_NAME[info[2].dest]} 月台:${info[2].plat} 到站時間:${info[2].time}  <b>${timeCal(currentTime, info[2].time, "Thrid")}</b></div>
+    <div>往 ${STA_NAME[info[3].dest]} 月台:${info[3].plat} 到站時間:${info[3].time}  <b>${timeCal(currentTime, info[3].time, "Fourth")}</b></div>`
 
 
 }
