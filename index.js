@@ -1,15 +1,16 @@
 async function getInfo(){
-    const res = await fetch('https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=AEL&sta=AIR')
+    const res = await fetch('https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=TML&sta=TIS')
     const json = await res.json()
 
     const STA_NAME={
         AWE:"博覽館",
-        HOK:"香港"
+        HOK:"香港",
+        TIS:"天水圍"
     }
 
     
     
-    const info = json.data['AEL-AIR'].UP
+    const info = json.data['TML-TIS'].DOWN
     
     const currentTime = json.curr_time;
     const currentTimeStamp = new Date(currentTime).getTime();
