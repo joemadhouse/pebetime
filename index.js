@@ -5,7 +5,8 @@ async function getInfo(){
     const STA_NAME={
         AWE:"博覽館",
         HOK:"香港",
-        TIS:"天水圍"
+        TIS:"天水圍",
+        WKS:"烏溪沙"
     }
 
     
@@ -25,8 +26,8 @@ async function getInfo(){
     document.getElementById("time").innerHTML=info[0].time
 
     document.getElementById("inone").innerHTML=
-    `<div>${STA_NAME[info[0].dest]} 月台:${info[0].plat} 到站時間:${info[0].time} <b>${timeCal(currentTime, info[0].time, "First")}</b></div>
-    <div>${STA_NAME[info[1].dest]} 月台:${info[1].plat} 到站時間:${info[1].time}  <b>${timeCal(currentTime, info[1].time, "Second")}</b></div>`
+    `<div>往 ${STA_NAME[info[0].dest]} 月台:${info[0].plat} 到站時間:${info[0].time} <b>${timeCal(currentTime, info[0].time, "First")}</b></div>
+    <div>往 ${STA_NAME[info[1].dest]} 月台:${info[1].plat} 到站時間:${info[1].time}  <b>${timeCal(currentTime, info[1].time, "Second")}</b></div>`
 
 
 }
