@@ -25,13 +25,19 @@ async function getInfo(){
     document.getElementById("platform").innerHTML=info[0].plat
     document.getElementById("time").innerHTML=info[0].time
 
-    document.getElementById("inone").innerHTML=
-    `<div>往 ${STA_NAME[info[0].dest]} 月台:${info[0].plat} 到站時間:${info[0].time} <b>${timeCal(currentTime, info[0].time, "First")}</b></div>
-    <div>往 ${STA_NAME[info[1].dest]} 月台:${info[1].plat} 到站時間:${info[1].time}  <b>${timeCal(currentTime, info[1].time, "Second")}</b></div>
-    <div>往 ${STA_NAME[info[2].dest]} 月台:${info[2].plat} 到站時間:${info[2].time}  <b>${timeCal(currentTime, info[2].time, "Thrid")}</b></div>
-    <div>往 ${STA_NAME[info[3].dest]} 月台:${info[3].plat} 到站時間:${info[3].time}  <b>${timeCal(currentTime, info[3].time, "Fourth")}</b></div>`
+    //document.getElementById("inone").innerHTML=
+    //`<div>往 ${STA_NAME[info[0].dest]} 月台:${info[0].plat} 到站時間:${info[0].time} <b>${timeCal(currentTime, info[0].time, "First")}</b></div>
+    //<div>往 ${STA_NAME[info[1].dest]} 月台:${info[1].plat} 到站時間:${info[1].time}  <b>${timeCal(currentTime, info[1].time, "Second")}</b></div>
+    //<div>往 ${STA_NAME[info[2].dest]} 月台:${info[2].plat} 到站時間:${info[2].time}  <b>${timeCal(currentTime, info[2].time, "Thrid")}</b></div>
+    //<div>往 ${STA_NAME[info[3].dest]} 月台:${info[3].plat} 到站時間:${info[3].time}  <b>${timeCal(currentTime, info[3].time, "Fourth")}</b></div>`
 
+    let TrainData = ""
+    for (let i of info){
+        TrainData += `<div>往 ${STA_NAME[i.dest]} 月台:${i.plat} 到站時間:${i.time} <b>${timeCal(currentTime, i.time, i.seq)}</b></div>`
+    }
+    document.getElementById("inone").innerHTML=TrainData
 
+    
 }
 
 function timeCal(now, target, trainCall){
@@ -40,11 +46,11 @@ function timeCal(now, target, trainCall){
     const timeLeft = Math.ceil((targetTimeStamp-currentTimeStamp)/1000/60);
 
     if (timeLeft === 0){
-        return `The ${trainCall} train is departing`
+        return `The train is departing`
     }else if(timeLeft <= 2){
-        return `The ${trainCall} train is approaching`
+        return `The train is approaching`
     }else {
-        return `The ${trainCall} train will arrive in ${timeLeft} minutes`
+        return `Train ${trainCall} will arrive in ${timeLeft} minutes`
     }
 
 }
