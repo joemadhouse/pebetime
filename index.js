@@ -21,9 +21,9 @@ async function getInfo(){
     console.log(info[0].time);
 
     console.log(json);
-    document.getElementById("destination").innerHTML=STA_NAME[info[0].dest]
-    document.getElementById("platform").innerHTML=info[0].plat
-    document.getElementById("time").innerHTML=info[0].time
+    //document.getElementById("destination").innerHTML=STA_NAME[info[0].dest]
+    //document.getElementById("platform").innerHTML=info[0].plat
+    //document.getElementById("time").innerHTML=info[0].time
 
     //document.getElementById("inone").innerHTML=
     //`<div>往 ${STA_NAME[info[0].dest]} 月台:${info[0].plat} 到站時間:${info[0].time} <b>${timeCal(currentTime, info[0].time, "First")}</b></div>
