@@ -1,4 +1,7 @@
 async function getInfo(){
+
+
+
     const res = await fetch('https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=TML&sta=TIS')
     const json = await res.json()
 
@@ -9,16 +12,18 @@ async function getInfo(){
         WKS:"烏溪沙"
     }
 
-    
-    
+
+
     const info = json.data['TML-TIS'].DOWN
     
-    const currentTime = json.curr_time;
+    const currentTime = json.curr_time.replace(/-/g,"/");
+    const targetTime = info[0].time.replace(/-/g,"/");
+    // .replace("x", "y") turn the first x in the sring into y
+    // .replace(/x/g, "y") turn all the x in the string into y, g representing global.
     const currentTimeStamp = new Date(currentTime).getTime();
-    const targetTimeStamp = new Date(info[0].time).getTime();
+    const targetTimeStamp = new Date(targetTime).getTime();
     const timeLeft = Math.ceil((targetTimeStamp-currentTimeStamp)/1000/60);
-    console.log(new Date());
-    console.log(info[0].time);
+    console.log(timeLeft)
 
     console.log(json);
     //document.getElementById("destination").innerHTML=STA_NAME[info[0].dest]
@@ -41,8 +46,8 @@ async function getInfo(){
 }
 
 function timeCal(now, target, trainCall){
-    const currentTimeStamp = new Date(now).getTime();
-    const targetTimeStamp = new Date(target).getTime();
+    const currentTimeStamp = new Date(now.replace(/-/g,"/")).getTime();
+    const targetTimeStamp = new Date(target.replace(/-/g,"/")).getTime();
     const timeLeft = Math.ceil((targetTimeStamp-currentTimeStamp)/1000/60);
 
     if (timeLeft === 0){
